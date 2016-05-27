@@ -1,0 +1,18 @@
+.login-box
+{   
+	width: 90%;
+	margin: 20px auto;
+}
+form
+{
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+	border-radius: 5px;
+	border: 2px solid lightblue;
+}
+p
+{
+	visibility: hidden;
+	color: red;
+}

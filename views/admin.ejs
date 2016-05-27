@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="adminApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>高考咨询聊天室</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/chat.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller='adminCtrl'>
+<div class="container">
+
+    <!-- logo -->
+    <div class="row">
+       <div class="header"></div>
+    </div>
+    <div class="row">
+
+        <!-- 聊天区 -->
+       
+            <!-- 聊天内容 -->
+            <div class="panel panel-default answer-block">
+                <div class="panel-heading">
+
+                    <span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);"></span>
+                    &nbsp;江西财经大学&nbsp;<a href="#">高校介绍</a>      
+                </div>
+                
+
+                <div class="panel-body chat-body">
+                    <div class="msg-list-body">
+                      <div class="clearfix msg-wrap" ng-repeat='item in questionsAnswerd' style="margin-bottom:35px;">
+                            <div class="msg-head">
+                                <span class="msg-name label label-primary pull-left">
+                                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+                                  <span ng-bind="item.question.name"></span>
+                                </span> 
+                                <span class="msg-time label label-default pull-left"> 
+                                  <span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;
+                                  <span ng-bind="item.question.time"></span>
+                            
+                                </span> 
+                                                                  
+                           </div>
+                           <div class="msg-content" ng-bind="item.question.content"> 
+                           </div>
+                           
+                            <div class="msg-head">
+                                <span class="msg-name label label-danger pull-left">
+                                  <span></span>&nbsp;管理员
+                                </span> 
+                           </div>
+                           <div class="msg-content" ng-bind="item.answer"> 
+                           </div>                                                        
+                      </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- 输入框 -->
+           <div class="form-group">
+              <label for="name">提问</label>
+              <input type="text" class="form-control" id="questionText" ng-model="question.content" disabled>
+           </div>
+
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" id="input-edit" ng-model="answerText">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="answer()">
+                        回答
+                        <span class="glyphicon glyphicon-send"></span>
+                    </button>
+                </span>
+            </div>        
+            
+
+            <div class="panel-body chat-body" style="margin-top:25px;">
+                <div class="msg-list-body">
+                     <div class="clearfix msg-wrap" ng-repeat='item in questions' ng-mouseenter="show()"  ng-mouseleave="show()">
+                        <div class="msg-head">
+                            <span class="msg-name label label-primary pull-left">
+                              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{item.name}}
+                            </span> 
+                            <span class="msg-time label label-default pull-left"> 
+                              <span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;{{item.time}}
+                            </span> 
+
+                            <span class="msg-time label label-danger pull-left"  ng-click="remove($index)"   style="cursor: pointer;
+                            margin-left:40px"> 
+                              <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;删除
+                            </span> 
+ 
+                            <span class="msg-time label label-danger pull-left"  ng-click="blockIp(item.ip)"   style="cursor: pointer;"> 
+                              <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;封IP
+                            </span>                  
+                            <span class="msg-time label label-danger pull-left"  ng-click="getQuestion($index)"   style="cursor: pointer;"> 
+                              <span class="glyphicon glyphicon-export"></span>&nbsp;&nbsp;回复
+                            </span>      
+
+                       </div>
+                       <div class="msg-content" style="cursor: pointer;" ng-bind="item.content">
+                       </div>
+                   </div>
+                </div>
+            </div>           
+        </div>
+        <div style="display:none">
+            <p id="admission"></p>  
+            <p id="identification"></p>  
+        </div>   
+</div>
+
+
+
+
+
+<script src="/js/angular.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/socket.io.js"></script>
+<script src="/js/sizeCtrl.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

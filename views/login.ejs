@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>
+		登录
+	</title>
+
+	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+   <meta name="viewport" charset="utf-8" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+</head>
+<body>
+<div class="container">
+<div class="login-box">
+<form class="form-horizontal" role="form" method="post">
+   <div class="form-group">
+      <label for="no1" class="col-sm-2 control-label">准考证号</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" id="no1" 
+           name="no1" placeholder="请输入准考证号" maxlength="10" required>
+      </div>
+   </div>
+   <p class="col-sm-offset-2" id="info1">请输入合法的准考证号</p>
+   <div class="form-group">
+      <label for="no2" class="col-sm-2 control-label">身份证号</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" id="no2" name="no2"
+            placeholder="请输入身份证号" maxlength="18" required>
+      </div>
+   </div>
+   <p class="col-sm-offset-2" id="info2">请输入合法的身份证号</p>
+   <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-info">登录</button>
+      </div>
+   </div>
+</form>
+</div>   
+</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script src="./js/login.js">
+</script>
+</html>

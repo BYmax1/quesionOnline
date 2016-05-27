@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="talkApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>高考咨询聊天室</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/chat.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller='talkCtrl'>
+<div class="container">
+    <!-- logo -->
+    <div class="row">
+       <div class="header"></div>
+    </div>
+    <div class="row">
+
+      
+            <!-- 回答区 -->
+            <div class="panel panel-default answer-block">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);"></span>
+                    &nbsp;<%=school%>&nbsp;<a href="#">高校介绍</a>      
+                </div>
+                <h2>回答区</h2>
+                <div class="panel-body chat-body">
+                    <div class="msg-list-body">
+                     <div class="clearfix msg-wrap" ng-repeat='item in questionsAnswerd' style="margin-bottom:35px;">
+                            <div class="msg-head">
+                                <span class="msg-name label label-primary pull-left">
+                                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+                                  <span ng-bind="item.question.name"></span>
+                                </span> 
+                                <span class="msg-time label label-default pull-left"> 
+                                  <span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;
+                                  <span ng-bind="item.question.time"></span>
+                                </span> 
+                           </div>
+                           <div class="msg-content" ng-bind="item.question.content">
+                           </div>
+                           
+                            <div class="msg-head">
+                                <span class="msg-name label label-danger pull-left">
+                                  <span></span>&nbsp;管理员
+                                </span> 
+                           </div>
+                           <div class="msg-content" ng-bind="item.answer">
+                           </div>                                                        
+                      </div>                        
+
+                    </div>
+               
+                </div>
+               </div> 
+
+            <!-- 输入框 -->
+            <div class="input-block">
+                 <div class="col-xs-8 col-lg-9">
+                   <input type="text" class="form-control pull-left" id="input-edit" placeholder="请输入提问内容" ng-model="text">
+                 </div>         
+                 <div class="col-xs-4 col-lg-3">
+                   <button class="btn btn-info pull-left" type="button" ng-click="sendMessage()">
+                        提问
+                        <span class="glyphicon glyphicon-send"></span>
+                    </button>                 
+                 </div>                     
+            </div>
+
+            <!-- 提问区 -->
+           <div class="panel panel-default quesion-block"> 
+            <h2>提问区</h2>
+            <div class="panel-body chat-body">
+                <div class="msg-list-body">
+                     <div class="clearfix msg-wrap" ng-repeat='item in questions'>
+                        <div class="msg-head">
+                            <span class="msg-name label label-primary pull-left">
+                              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+                              <span ng-bind="item.name"></span>
+                            </span> 
+                            <span class="msg-time label label-default pull-left"> 
+                              <span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;
+                              <span ng-bind="item.time"></span>
+                            </span> 
+                       </div>
+                       <div class="msg-content" ng-bind="item.content"> 
+                       </div>
+                   </div>
+                </div>
+            </div>            
+        </div>
+        <div style="display:none">
+            <p id="admission"><%=admission%></p>  
+            <p id="identification"><%=identification%></p>  
+            <p id="school"><%=school%></p>  
+        </div>   
+
+    </div>
+</div>
+
+
+
+<script src="/js/angular.js"></script>
+<script src="/js/socket.io.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/sizeCtrl.js"></script>
+<script src="/js/talk.js"></script>
+</body>
+</html>
