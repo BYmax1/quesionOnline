@@ -1,0 +1,32 @@
+.container
+{
+	text-align: center;
+}
+
+.login-box
+{   
+	width: 90%;
+	text-align: center;
+
+}
+label
+{
+	float: left;
+}
+form
+{
+	width: 80%;
+	padding: 20px;
+	border-radius: 5px;
+	border: 2px solid lightblue;
+}
+button
+{
+	float: left;
+	position: relative;
+}
+p
+{
+	visibility: hidden;
+	color: red;
+}
